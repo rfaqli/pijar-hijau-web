@@ -5,7 +5,7 @@ let appHandler: ((req: any, res: any) => void) | null = null;
 async function getApp() {
   if (!appHandler) {
     // Arahkan ke file Express App utama
-    const { default: app } = await import('../src/serverApp');
+    const { default: app } = await import('../src/serverApp.js');
     appHandler = app;
   }
   return appHandler;
