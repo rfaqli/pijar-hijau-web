@@ -3,8 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import { requireAuth, AuthRequest } from './src/middleware/auth.ts';
-import { getOrCreateUser, updateUserProfile, getUserProfile, getAllUsers, createCustomUser, getUserByEmail } from './src/db/users.ts';
-import { adminAuth } from './src/lib/firebase-admin.ts';
+import { updateUserProfile, getUserProfile, getAllUsers, createCustomUser, getUserByEmail, updateUserPassword } from './src/db/users.ts';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -22,10 +21,13 @@ async function startServer() {
     try {
       const email = 'rifkifadhilatilaqli@gmail.com';
       const existing = await getUserByEmail(email);
+      const hash = await bcrypt.hash('Admin4321', 10);
       if (!existing) {
-        const hash = await bcrypt.hash('PIJARHIJAU_Aqli_7', 10);
         await createCustomUser(email, hash);
         console.log('Super admin seeded successfully');
+      } else {
+        await updateUserPassword(email, hash);
+        console.log('Super admin password updated successfully');
       }
     } catch (e) {
       console.error('Error seeding super admin', e);
@@ -42,7 +44,7 @@ async function startServer() {
       }
       const hash = await bcrypt.hash(password, 10);
       const user = await createCustomUser(email, hash);
-      const token = jwt.sign({ email: user.email, uid: user.firebaseUid }, JWT_SECRET, { expiresIn: '7d' });
+      const token = jwt.sign({ email: user.email, uid: user.id.toString() }, JWT_SECRET, { expiresIn: '7d' });
       res.json({ token, user });
     } catch (error) {
       res.status(500).json({ error: (error as Error).message });
@@ -60,7 +62,7 @@ async function startServer() {
       if (!match) {
         return res.status(400).json({ error: 'Email atau password salah.' });
       }
-      const token = jwt.sign({ email: user.email, uid: user.firebaseUid }, JWT_SECRET, { expiresIn: '7d' });
+      const token = jwt.sign({ email: user.email, uid: user.id.toString() }, JWT_SECRET, { expiresIn: '7d' });
       res.json({ token, user });
     } catch (error) {
       res.status(500).json({ error: (error as Error).message });
@@ -70,9 +72,13 @@ async function startServer() {
   app.post('/api/auth/sync', requireAuth, async (req: AuthRequest, res) => {
     try {
       if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
-      const { email, uid, name } = req.user;
-      const user = await getOrCreateUser(uid || null, email || '', name || 'Pengguna Pijar Hijau');
-      res.json(user);
+      const { email } = req.user;
+      const user = await getUserByEmail(email);
+      if (user) {
+        res.json(user);
+      } else {
+        res.status(404).json({ error: 'User not found' });
+      }
     } catch (error) {
       res.status(500).json({ error: (error as Error).message });
     }

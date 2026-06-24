@@ -2,7 +2,6 @@ import { pgTable, serial, varchar, timestamp } from 'drizzle-orm/pg-core';
 
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
-  firebaseUid: varchar('firebase_uid', { length: 255 }).unique(),
   email: varchar('email', { length: 255 }).notNull().unique(),
   password: varchar('password', { length: 255 }),
   name: varchar('name', { length: 255 }),

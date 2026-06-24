@@ -3,8 +3,6 @@ import { useAtom } from 'jotai';
 import { profileCompletedAtom, userAvatarAtom, currentPageAtom, userNameAtom, userEducationAtom, userUniversityAtom, userFieldAtom, userLinkedinAtom } from '../data';
 import { cn } from '../lib/utils';
 import { Linkedin, Mail, School, BookOpen, MapPin, Lock, User, LogOut, ShieldAlert, Eye, EyeOff } from 'lucide-react';
-import { auth, googleAuthProvider } from '../lib/firebase';
-import { signInWithPopup, signOut as firebaseSignOut, onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
 
 export function ProfilSection() {
   const [profileCompleted, setProfileCompleted] = useAtom(profileCompletedAtom);
@@ -15,7 +13,7 @@ export function ProfilSection() {
   const [linkedin, setLinkedin] = useAtom(userLinkedinAtom);
   const [, setCurrentPage] = useAtom(currentPageAtom);
 
-  const [user, setUser] = useState<{ email: string; token: string; isFirebase: boolean } | null>(null);
+  const [user, setUser] = useState<{ email: string; token: string } | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -33,9 +31,9 @@ export function ProfilSection() {
       });
       if (resSync.ok) {
         const data = await resSync.json();
+        setName(data.name || '');
         if (data.education) {
           setProfileCompleted(true);
-          setName(data.name || '');
           setEducation(data.education || '');
           setUniversity(data.university || '');
           setField(data.field || '');
@@ -67,10 +65,10 @@ export function ProfilSection() {
           });
           if (res.ok) {
             const data = await res.json();
-            setUser({ email: data.email, token, isFirebase: false });
+            setUser({ email: data.email, token });
             await fetchUserData(token, data.email);
             setLoading(false);
-            return true; // handled by custom auth
+            return true;
           } else {
             localStorage.removeItem('token');
           }
@@ -78,24 +76,11 @@ export function ProfilSection() {
           localStorage.removeItem('token');
         }
       }
+      setLoading(false);
       return false;
     };
 
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      const isCustom = await checkCustomAuth();
-      if (!isCustom) {
-        if (currentUser && currentUser.email) {
-          const token = await currentUser.getIdToken();
-          setUser({ email: currentUser.email, token, isFirebase: true });
-          await fetchUserData(token, currentUser.email);
-        } else {
-          setUser(null);
-        }
-        setLoading(false);
-      }
-    });
-
-    return () => unsubscribe();
+    checkCustomAuth();
   }, []);
 
   const validateEmail = (emailStr: string) => {
@@ -140,7 +125,7 @@ export function ProfilSection() {
         throw new Error(data.error || 'Autentikasi gagal');
       }
       localStorage.setItem('token', data.token);
-      setUser({ email: data.user.email, token: data.token, isFirebase: false });
+      setUser({ email: data.user.email, token: data.token });
       await fetchUserData(data.token, data.user.email);
       setEmail('');
       setPassword('');
@@ -149,22 +134,9 @@ export function ProfilSection() {
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    try {
-      setAuthError('');
-      await signInWithPopup(auth, googleAuthProvider);
-    } catch (err: any) {
-      setAuthError(err.message || 'Terjadi kesalahan saat masuk dengan Google.');
-    }
-  };
-
   const handleSignOut = () => {
-    if (user?.isFirebase) {
-      firebaseSignOut(auth);
-    } else {
-      localStorage.removeItem('token');
-      setUser(null);
-    }
+    localStorage.removeItem('token');
+    setUser(null);
     setProfileCompleted(false);
   };
 
@@ -188,14 +160,8 @@ export function ProfilSection() {
 
     try {
       let token = user.token;
-      if (user.isFirebase) {
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-          token = await currentUser.getIdToken();
-        }
-      }
 
-      await fetch('/api/profile', {
+      const res = await fetch('/api/profile', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -203,9 +169,16 @@ export function ProfilSection() {
         },
         body: JSON.stringify({ name, education, university, field, linkedin })
       });
+      
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || 'Gagal menyimpan profil');
+      }
+      
       setProfileCompleted(true);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
+      setProfileError(error.message || 'Terjadi kesalahan saat menyimpan profil.');
     }
   };
 
@@ -250,23 +223,6 @@ export function ProfilSection() {
               </button>
             </form>
 
-            <div className="relative flex items-center justify-center my-6">
-              <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200"></div></div>
-              <span className="bg-white px-3 text-xs text-slate-400 relative z-10 uppercase font-medium">atau</span>
-            </div>
-            
-            <button 
-              onClick={handleGoogleSignIn}
-              className="w-full flex items-center justify-center gap-3 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 py-2.5 rounded-lg font-medium transition shadow-sm"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24">
-                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-              </svg>
-              Google
-            </button>
             <p className="text-center mt-6 text-sm text-slate-600">
               {isLogin ? 'Belum punya akun?' : 'Sudah punya akun?'} {' '}
               <button onClick={() => {setIsLogin(!isLogin); setAuthError('');}} className="text-green-700 font-medium hover:underline">
@@ -405,17 +361,25 @@ export function ProfilSection() {
                     <h3 className="font-bold text-slate-800">Super Admin Dashboard</h3>
                   </div>
                   <div className="space-y-3">
-                    {usersList.map((u, i) => (
-                      <div key={i} className="flex justify-between items-center p-3 bg-slate-50 rounded-lg border border-slate-100">
-                        <div>
-                          <p className="font-medium text-sm text-slate-800">{u.name || 'User'}</p>
-                          <p className="text-xs text-slate-500">{u.email}</p>
+                    {usersList.map((u, i) => {
+                      let sizeLabel = '0 Bytes';
+                      try {
+                        const sizeInBytes = new Blob([JSON.stringify(u)]).size;
+                        if (sizeInBytes < 1024) sizeLabel = `${sizeInBytes} Bytes`;
+                        else sizeLabel = `${(sizeInBytes / 1024).toFixed(2)} KB`;
+                      } catch {}
+                      return (
+                        <div key={i} className="flex justify-between items-center p-3 bg-slate-50 rounded-lg border border-slate-100">
+                          <div>
+                            <p className="font-medium text-sm text-slate-800">{u.name || 'User'}</p>
+                            <p className="text-xs text-slate-500">{u.email}</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-xs font-medium text-green-700 bg-green-50 px-2 py-1 rounded border border-green-100">Storage: {sizeLabel}</p>
+                          </div>
                         </div>
-                        <div className="text-right">
-                          <p className="text-xs font-medium text-green-700 bg-green-50 px-2 py-1 rounded">Storage: {(Math.random() * 5 + 1).toFixed(2)} MB</p>
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                     {usersList.length === 0 && <p className="text-sm text-slate-500 text-center py-4">Belum ada pengguna lain terdaftar.</p>}
                   </div>
                 </div>

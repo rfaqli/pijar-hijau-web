@@ -2,30 +2,6 @@ import { db } from './index.ts';
 import { users } from './schema.ts';
 import { eq } from 'drizzle-orm';
 
-export async function getOrCreateUser(uid: string, email: string, name: string) {
-  try {
-    const result = await db.insert(users)
-      .values({
-        firebaseUid: uid,
-        email,
-        name
-      })
-      .onConflictDoUpdate({
-        target: users.email,
-        set: {
-          firebaseUid: uid,
-          name,
-        },
-      })
-      .returning();
-
-    return result[0];
-  } catch (error) {
-    console.error("Database query failed:", error);
-    throw new Error("Database query failed. Please try again later.", { cause: error });
-  }
-}
-
 export async function createCustomUser(email: string, passwordHash: string) {
   try {
     const result = await db.insert(users)
@@ -44,6 +20,19 @@ export async function createCustomUser(email: string, passwordHash: string) {
 export async function getUserByEmail(email: string) {
   try {
     const result = await db.select().from(users).where(eq(users.email, email));
+    return result[0];
+  } catch (error) {
+    console.error("Database query failed:", error);
+    throw new Error("Database query failed. Please try again later.", { cause: error });
+  }
+}
+
+export async function updateUserPassword(email: string, passwordHash: string) {
+  try {
+    const result = await db.update(users)
+      .set({ password: passwordHash })
+      .where(eq(users.email, email))
+      .returning();
     return result[0];
   } catch (error) {
     console.error("Database query failed:", error);
