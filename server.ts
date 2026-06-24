@@ -1,9 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import { createServer as createViteServer } from 'vite';
-import { requireAuth, AuthRequest } from './src/middleware/auth.ts';
-import { updateUserProfile, getUserProfile, getAllUsers, createCustomUser, getUserByEmail, updateUserPassword } from './src/db/users.ts';
+import { requireAuth, AuthRequest } from './src/middleware/auth';
+import { updateUserProfile, getUserProfile, getAllUsers, createCustomUser, getUserByEmail, updateUserPassword } from './src/db/users';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -17,6 +16,7 @@ app.use(express.json());
 
 // Initialize Super Admin
 const initSuperAdmin = async () => {
+  if (process.env.VERCEL) return;
   try {
     const email = 'rifkifadhilatilaqli@gmail.com';
     const existing = await getUserByEmail(email);
@@ -129,6 +129,7 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 
 async function startViteServer() {
   if (process.env.NODE_ENV !== 'production' && process.env.VERCEL !== '1') {
+    const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
