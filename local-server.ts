@@ -1,11 +1,11 @@
 import express from 'express';
 import path from 'path';
-import app, { initSuperAdmin } from './server';
+import app, { initSuperAdmin } from './src/serverApp';
 import { createServer as createViteServer } from 'vite';
 
 async function startLocalServer() {
   await initSuperAdmin();
-  const PORT = process.env.PORT || 3000;
+  const PORT = Number(process.env.PORT) || 3000;
 
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({

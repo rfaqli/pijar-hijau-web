@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import { requireAuth, AuthRequest } from './src/middleware/auth';
-import { updateUserProfile, getUserProfile, getAllUsers, createCustomUser, getUserByEmail, updateUserPassword } from './src/db/users';
-import { db } from './src/db/index';
+import { requireAuth, AuthRequest } from './middleware/auth';
+import { updateUserProfile, getUserProfile, getAllUsers, createCustomUser, getUserByEmail, updateUserPassword } from './db/users';
+import { db } from './db/index';
 import { sql } from 'drizzle-orm';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
