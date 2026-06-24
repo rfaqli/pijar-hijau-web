@@ -105,6 +105,10 @@ app.get('/api/profile', requireAuth, async (req: AuthRequest, res) => {
   }
 });
 
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
 app.get('/api/users', requireAuth, async (req: AuthRequest, res) => {
   try {
     if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
@@ -116,6 +120,11 @@ app.get('/api/users', requireAuth, async (req: AuthRequest, res) => {
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
   }
+});
+
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error('Express Global Error:', err);
+  res.status(500).json({ error: 'Internal Server Error', message: err.message });
 });
 
 async function startViteServer() {
