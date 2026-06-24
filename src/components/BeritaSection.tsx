@@ -30,60 +30,60 @@ export function BeritaSection() {
 
   return (
     <section className="page-section active pt-0 min-h-screen relative overflow-hidden bg-[#f7fcf8]" style={{ marginTop: '32px' }}>
-      <div className="py-20 px-6 relative z-10 w-full overflow-hidden">
+      <div className="py-8 sm:py-20 px-4 sm:px-6 relative z-10 w-full overflow-hidden">
         <div className="max-w-7xl mx-auto">
           
-          <div className="text-center mb-16 relative">
-            <h2 className="font-bold text-3xl md:text-4xl text-[#1a8b44] mb-4">Berita & Informasi</h2>
-            <p className="text-gray-500 font-medium text-base">Perkembangan terkini dari dunia industri hijau Indonesia</p>
+          <div className="text-center mb-8 sm:mb-16 relative">
+            <h2 className="font-bold text-xl sm:text-3xl md:text-4xl text-[#1a8b44] mb-2 sm:mb-4">Berita & Informasi</h2>
+            <p className="text-gray-500 font-medium text-[10px] sm:text-base">Perkembangan terkini dari dunia industri hijau Indonesia</p>
           </div>
 
-          <div className="mb-16">
-            <div className="flex items-center gap-2 mb-6">
-              <Flame className="w-5 h-5 text-orange-500" />
-              <h3 className="text-[#1a8b44] font-bold text-lg">Berita Viral</h3>
+          <div className="mb-8 sm:mb-16">
+            <div className="flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-6">
+              <Flame className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
+              <h3 className="text-[#1a8b44] font-bold text-sm sm:text-lg">Berita Viral</h3>
             </div>
             
-            <div className="flex gap-6 pb-4 overflow-x-auto carousel-container snap-x hide-scrollbar">
+            <div className="flex gap-3 sm:gap-6 pb-2 sm:pb-4 overflow-x-auto carousel-container snap-x hide-scrollbar">
               {viralNews.map((news, idx) => (
-                <div key={idx} className="snap-start flex-none w-[320px] bg-white rounded-xl overflow-hidden border border-[#fbdcbb] cursor-pointer transition hover:shadow-md group" onClick={() => setSelectedNews(news)}>
-                  <div className="relative h-40">
+                <div key={idx} className="snap-start flex-none w-[220px] sm:w-[320px] bg-white rounded-lg sm:rounded-xl overflow-hidden border border-[#fbdcbb] cursor-pointer transition hover:shadow-md group" onClick={() => setSelectedNews(news)}>
+                  <div className="relative h-24 sm:h-40">
                     <img src={news.img} alt="viral" className="w-full h-full object-cover" loading="lazy" />
                   </div>
-                  <div className="p-4">
-                    <p className="text-gray-400 text-xs mb-2">{news.date}</p>
-                    <h4 className="font-bold text-gray-900 text-sm leading-snug group-hover:text-[#1a8b44] transition">{news.title}</h4>
+                  <div className="p-2 sm:p-4">
+                    <p className="text-gray-400 text-[8px] sm:text-xs mb-1 sm:mb-2">{news.date}</p>
+                    <h4 className="font-bold text-gray-900 text-[10px] sm:text-sm leading-tight sm:leading-snug group-hover:text-[#1a8b44] transition">{news.title}</h4>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto mb-16">
-            <div className="flex rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm">
+          <div className="max-w-3xl mx-auto mb-8 sm:mb-16">
+            <div className="flex rounded-md sm:rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm">
               <input 
                 type="text" 
                 placeholder="Cari berita hijau..." 
-                className="flex-1 px-6 py-4 outline-none text-sm bg-transparent text-gray-900 placeholder-gray-400"
+                className="flex-1 px-3 py-2 sm:px-6 sm:py-4 outline-none text-[10px] sm:text-sm bg-transparent text-gray-900 placeholder-gray-400"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
               />
-              <button className="bg-[#1a8b44] text-white px-8 hover:bg-green-700 transition flex items-center justify-center">
-                <Search className="w-5 h-5" />
+              <button className="bg-[#1a8b44] text-white px-4 sm:px-8 hover:bg-green-700 transition flex items-center justify-center">
+                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
             {filteredNews.map((news, idx) => (
-              <article key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer flex flex-col group border border-gray-100" onClick={() => setSelectedNews(news)}>
-                <div className="h-48 overflow-hidden relative shrink-0">
+              <article key={idx} className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer flex flex-col group border border-gray-100" onClick={() => setSelectedNews(news)}>
+                <div className="h-24 sm:h-48 overflow-hidden relative shrink-0">
                   <img src={news.img} alt={news.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                 </div>
-                <div className="flex flex-col flex-grow p-6">
-                  <p className="text-xs text-gray-400 mb-3">{news.date}</p>
-                  <h3 className="font-bold text-gray-900 text-lg mb-3 group-hover:text-[#1a8b44] transition-colors">{news.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed line-clamp-3">{news.excerpt}</p>
+                <div className="flex flex-col flex-grow p-3 sm:p-6">
+                  <p className="text-[8px] sm:text-xs text-gray-400 mb-1.5 sm:mb-3">{news.date}</p>
+                  <h3 className="font-bold text-gray-900 text-[10px] sm:text-lg mb-1.5 sm:mb-3 group-hover:text-[#1a8b44] transition-colors leading-tight">{news.title}</h3>
+                  <p className="text-gray-500 text-[8px] sm:text-sm leading-tight sm:leading-relaxed line-clamp-2 sm:line-clamp-3">{news.excerpt}</p>
                 </div>
               </article>
             ))}
@@ -146,19 +146,19 @@ export function BeritaSection() {
         </div>
       )}
 
-      <div className="py-20 px-6 relative z-10 bg-gradient-to-r from-yellow-400 to-[#a3d95d]">
+      <div className="py-8 sm:py-20 px-4 sm:px-6 relative z-10 bg-gradient-to-r from-yellow-400 to-[#a3d95d]">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-bold text-2xl text-yellow-950 mb-3">Dapatkan Notifikasi Real-Time</h2>
-          <p className="text-yellow-900 mb-8 font-medium">Lowongan kerja, kelas baru, sertifikasi, dan peluang investasi langsung ke inbox Anda.</p>
+          <h2 className="font-bold text-sm sm:text-2xl text-yellow-950 mb-1 sm:mb-3">Dapatkan Notifikasi Real-Time</h2>
+          <p className="text-yellow-900 mb-4 sm:mb-8 font-medium text-[10px] sm:text-base leading-tight sm:leading-normal">Lowongan kerja, kelas baru, sertifikasi, dan peluang investasi langsung ke inbox Anda.</p>
           <form 
-            className="flex flex-col sm:flex-row max-w-lg mx-auto gap-0 bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100"
+            className="flex flex-row sm:flex-row max-w-lg mx-auto gap-0 bg-white rounded-md sm:rounded-lg overflow-hidden shadow-sm border border-gray-100"
             onSubmit={(e) => {
               e.preventDefault();
               alert('Terima kasih telah mendaftar!');
             }}
           >
-            <input type="email" placeholder="Masukkan email Anda" className="flex-1 px-6 py-3 outline-none text-sm text-gray-900 placeholder-gray-400" required />
-            <button type="submit" className="bg-[#1a8b44] text-white hover:bg-green-700 transition px-8 py-3 font-medium text-sm whitespace-nowrap">
+            <input type="email" placeholder="Masukkan email Anda" className="flex-1 px-3 py-2 sm:px-6 sm:py-3 outline-none text-[10px] sm:text-sm text-gray-900 placeholder-gray-400" required />
+            <button type="submit" className="bg-[#1a8b44] text-white hover:bg-green-700 transition px-4 py-2 sm:px-8 sm:py-3 font-medium text-[10px] sm:text-sm whitespace-nowrap">
               Daftar
             </button>
           </form>

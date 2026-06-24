@@ -49,35 +49,35 @@ export function SertifikasiSection() {
 
   return (
     <section className="page-section active pt-0 min-h-screen bg-[#f7fcf8] relative overflow-hidden" style={{ marginTop: '32px' }}>
-      <div className="py-20 px-6 relative z-10 w-full overflow-hidden">
+      <div className="pt-10 pb-8 sm:py-20 px-4 sm:px-6 relative z-10 w-full overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 relative">
-            <h2 className="font-bold text-3xl md:text-4xl text-[#1a8b44] mb-4">Sertifikasi Industri Hijau</h2>
-            <p className="text-[#8ac59d] font-medium text-lg max-w-2xl mx-auto mb-16 mt-4">Tingkatkan kredibilitas profesional Anda dengan sertifikasi yang diakui industri.</p>
-            <h3 className="font-bold text-3xl text-[#1a8b44] mb-8">Program Sertifikasi Pilihan</h3>
+          <div className="text-center mb-8 sm:mb-16 relative">
+            <h2 className="font-bold text-xl sm:text-3xl md:text-4xl text-[#1a8b44] mb-2 sm:mb-4">Sertifikasi Industri Hijau</h2>
+            <p className="text-[#8ac59d] font-medium text-xs sm:text-lg max-w-2xl mx-auto mb-6 sm:mb-16 mt-2 sm:mt-4">Tingkatkan kredibilitas profesional Anda dengan sertifikasi yang diakui industri.</p>
+            <h3 className="font-bold text-lg sm:text-3xl text-[#1a8b44] mb-4 sm:mb-8">Program Sertifikasi Pilihan</h3>
           </div>
 
-          <div className="mb-20">
+          <div className="mb-10 sm:mb-20">
             <div 
               ref={scrollContainerRef}
               onScroll={handleScroll}
-              className="flex overflow-x-auto pb-8 snap-x px-4 gap-6 scrollbar-hide hide-scrollbar w-full" 
+              className="flex overflow-x-auto pb-4 sm:pb-8 snap-x px-2 sm:px-4 gap-3 sm:gap-6 scrollbar-hide hide-scrollbar w-full" 
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {certs.map((c, idx) => {
                 const Icon = c.icon;
                 return (
                   <a key={idx} href="https://proglat.kemnaker.go.id/" target="_blank" rel="noopener noreferrer" 
-                     className={`w-[320px] md:w-[400px] shrink-0 snap-start rounded-[24px] overflow-hidden border-y border-r border-gray-100 shadow-sm hover:shadow-md transition-all group p-8 flex flex-col justify-between border-l-4 ${c.theme.bg} ${c.theme.border}`}>
+                     className={`w-[220px] sm:w-[320px] md:w-[400px] shrink-0 snap-start rounded-xl sm:rounded-[24px] overflow-hidden border-y border-r border-gray-100 shadow-sm hover:shadow-md transition-all group p-4 sm:p-8 flex flex-col justify-between border-l-4 ${c.theme.bg} ${c.theme.border}`}>
                     <div>
-                      <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-8 shadow-sm ${c.theme.iconBg}`}>
-                        <Icon className={`w-7 h-7 ${c.theme.iconColor}`} />
+                      <div className={`w-10 h-10 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-8 shadow-sm ${c.theme.iconBg}`}>
+                        <Icon className={`w-5 h-5 sm:w-7 sm:h-7 ${c.theme.iconColor}`} />
                       </div>
-                      <h3 className="font-bold text-xl text-gray-900 mb-3">{c.title}</h3>
-                      <p className="text-gray-500 text-[15px] leading-relaxed">{c.desc}</p>
+                      <h3 className="font-bold text-sm sm:text-xl text-gray-900 mb-1.5 sm:mb-3 leading-tight">{c.title}</h3>
+                      <p className="text-gray-500 text-[10px] sm:text-[15px] leading-tight sm:leading-relaxed">{c.desc}</p>
                     </div>
-                    <div className={`mt-8 flex items-center gap-2 font-medium text-[15px] transition-all ${c.theme.text}`}>
-                      <span>Daftar</span><ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    <div className={`mt-4 sm:mt-8 flex items-center gap-1.5 sm:gap-2 font-medium text-[10px] sm:text-[15px] transition-all ${c.theme.text}`}>
+                      <span>Daftar</span><ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </a>
                 );
