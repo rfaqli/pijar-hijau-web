@@ -10,7 +10,11 @@ export const createPool = () => {
     }
   };
 
-  if (process.env.DATABASE_URL) {
+  if (process.env.POSTGRES_URL) {
+    config.connectionString = process.env.POSTGRES_URL;
+  } else if (process.env.POSTGRES_URL_NON_POOLING) {
+    config.connectionString = process.env.POSTGRES_URL_NON_POOLING;
+  } else if (process.env.DATABASE_URL) {
     config.connectionString = process.env.DATABASE_URL;
   } else {
     // Add dummy config to prevent crash during build time if env is missing
