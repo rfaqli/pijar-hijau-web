@@ -1,6 +1,19 @@
 import { Zap, ShieldCheck, Award, Globe, CreditCard, ArrowRight } from 'lucide-react';
+import { useState, useRef } from 'react';
 
 export function SertifikasiSection() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+      const progress = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
+      setScrollProgress(progress);
+    }
+  };
+
   const certs = [
     { 
       icon: Zap, 
@@ -45,7 +58,12 @@ export function SertifikasiSection() {
           </div>
 
           <div className="mb-20">
-            <div className="flex overflow-x-auto pb-8 snap-x px-4 gap-6 scrollbar-hide hide-scrollbar w-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div 
+              ref={scrollContainerRef}
+              onScroll={handleScroll}
+              className="flex overflow-x-auto pb-8 snap-x px-4 gap-6 scrollbar-hide hide-scrollbar w-full" 
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
               {certs.map((c, idx) => {
                 const Icon = c.icon;
                 return (
@@ -70,11 +88,30 @@ export function SertifikasiSection() {
             
             {/* Scrollbar instruction/indicator visual from the screenshot */}
             <div className="max-w-[70%] mx-auto mt-4 flex items-center gap-2">
-               <div className="w-0 h-0 border-t-4 border-b-4 border-r-[6px] border-t-transparent border-b-transparent border-r-gray-400"></div>
+               <button 
+                 onClick={() => {
+                   if (scrollContainerRef.current) {
+                     scrollContainerRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+                   }
+                 }}
+                 className="w-0 h-0 border-t-4 border-b-4 border-r-[6px] border-t-transparent border-b-transparent border-r-gray-400 cursor-pointer hover:border-r-gray-600 transition-colors"
+                 aria-label="Scroll left"
+               />
                <div className="h-4 bg-gray-400 rounded-full w-full overflow-hidden flex relative">
-                 <div className="absolute top-0 bottom-0 left-0 bg-gray-500 w-[70px] rounded-full"></div>
+                 <div 
+                   className="absolute top-0 bottom-0 bg-gray-500 w-[70px] rounded-full transition-all duration-100 ease-out"
+                   style={{ left: `calc(${scrollProgress}% - ${scrollProgress * 0.7}px)` }}
+                 ></div>
                </div>
-               <div className="w-0 h-0 border-t-4 border-b-4 border-l-[6px] border-t-transparent border-b-transparent border-l-gray-400"></div>
+               <button 
+                 onClick={() => {
+                   if (scrollContainerRef.current) {
+                     scrollContainerRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+                   }
+                 }}
+                 className="w-0 h-0 border-t-4 border-b-4 border-l-[6px] border-t-transparent border-b-transparent border-l-gray-400 cursor-pointer hover:border-l-gray-600 transition-colors"
+                 aria-label="Scroll right"
+               />
             </div>
           </div>
         </div>
