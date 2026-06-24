@@ -1,6 +1,5 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
-import pkg from 'pg';
-const { Pool } = pkg;
+import { Pool } from 'pg';
 import * as schema from './schema';
 
 export const createPool = () => {
@@ -14,10 +13,11 @@ export const createPool = () => {
   if (process.env.DATABASE_URL) {
     config.connectionString = process.env.DATABASE_URL;
   } else {
-    config.host = process.env.SQL_HOST;
-    config.user = process.env.SQL_USER;
-    config.password = process.env.SQL_PASSWORD;
-    config.database = process.env.SQL_DB_NAME;
+    // Add dummy config to prevent crash during build time if env is missing
+    config.host = process.env.SQL_HOST || 'dummy';
+    config.user = process.env.SQL_USER || 'dummy';
+    config.password = process.env.SQL_PASSWORD || 'dummy';
+    config.database = process.env.SQL_DB_NAME || 'dummy';
   }
 
   return new Pool(config);
