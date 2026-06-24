@@ -44,26 +44,26 @@ export function InvestasiSection() {
       </div>
 
       {/* Grid Section */}
-      <div className="py-20 px-6 relative z-10">
+      <div className="py-10 sm:py-20 px-4 sm:px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-bold text-3xl text-[#1a8b44] mb-3">Investasi Hijau</h2>
-            <p className="text-gray-500">Pilih peluang investasi yang sejalan dengan visi Indonesia berkelanjutan</p>
+          <div className="text-center mb-6 sm:mb-16">
+            <h2 className="font-bold text-xl sm:text-3xl text-[#1a8b44] mb-2 sm:mb-3">Investasi Hijau</h2>
+            <p className="text-gray-500 text-xs sm:text-base px-4 sm:px-0">Pilih peluang investasi yang sejalan dengan visi Indonesia berkelanjutan</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 gap-2 sm:gap-8">
             {investmentData.map((inv, idx) => {
               const theme = cardThemes[idx % cardThemes.length];
               return (
-                <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all cursor-pointer flex flex-col" onClick={() => setSelectedInvest(inv)}>
-                  <div className={`h-48 relative overflow-hidden flex items-center justify-center p-6 ${theme.topBg}`}>
-                    <img src={inv.img} alt={inv.title} className="max-h-full max-w-full object-contain rounded-lg shadow-sm" loading="lazy" />
+                <div key={idx} className="bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all cursor-pointer flex flex-col" onClick={() => setSelectedInvest(inv)}>
+                  <div className={`h-24 sm:h-48 relative overflow-hidden flex items-center justify-center p-2 sm:p-6 ${theme.topBg}`}>
+                    <img src={inv.img} alt={inv.title} className="max-h-full max-w-full object-contain rounded-md sm:rounded-lg shadow-sm" loading="lazy" />
                   </div>
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h3 className={`font-bold text-lg mb-2 ${theme.titleColor}`}>{inv.title}</h3>
-                    <p className="text-sm text-gray-500 mb-6 flex-grow">{inv.product}</p>
-                    <button className={`${theme.btnBg} hover:opacity-90 text-white w-full py-3 rounded-lg text-sm font-bold transition mt-auto`}>
-                      Informasi Lanjut
+                  <div className="p-2 sm:p-6 flex flex-col flex-grow">
+                    <h3 className={`font-bold text-[10px] sm:text-lg mb-1 sm:mb-2 leading-tight ${theme.titleColor}`}>{inv.title}</h3>
+                    <p className="text-[7px] sm:text-sm text-gray-500 mb-2 sm:mb-6 flex-grow leading-tight sm:leading-normal">{inv.product}</p>
+                    <button className={`${theme.btnBg} hover:opacity-90 text-white w-full py-1 sm:py-3 rounded-md sm:rounded-lg text-[8px] sm:text-sm font-bold transition mt-auto`}>
+                      Informasi<span className="hidden sm:inline"> Lanjut</span>
                     </button>
                   </div>
                 </div>
