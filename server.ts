@@ -3,6 +3,8 @@ import cors from 'cors';
 import path from 'path';
 import { requireAuth, AuthRequest } from './src/middleware/auth';
 import { updateUserProfile, getUserProfile, getAllUsers, createCustomUser, getUserByEmail, updateUserPassword } from './src/db/users';
+import { db } from './src/db/index';
+import { sql } from 'drizzle-orm';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -16,7 +18,6 @@ app.use(express.json());
 
 // Initialize Super Admin
 const initSuperAdmin = async () => {
-  if (process.env.VERCEL) return;
   try {
     const email = 'rifkifadhilatilaqli@gmail.com';
     const existing = await getUserByEmail(email);
@@ -32,7 +33,6 @@ const initSuperAdmin = async () => {
     console.error('Error seeding super admin', e);
   }
 };
-initSuperAdmin();
 
 app.post('/api/auth/custom-register', async (req, res) => {
   try {
@@ -105,8 +105,32 @@ app.get('/api/profile', requireAuth, async (req: AuthRequest, res) => {
   }
 });
 
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' });
+app.get('/api/health', async (req, res) => {
+  try {
+    await db.execute(sql`SELECT 1`);
+    res.json({
+      status: 'ok',
+      db: 'connected',
+      env: {
+        POSTGRES_URL: !!process.env.POSTGRES_URL,
+        POSTGRES_URL_NON_POOLING: !!process.env.POSTGRES_URL_NON_POOLING,
+        DATABASE_URL: !!process.env.DATABASE_URL,
+        VERCEL: !!process.env.VERCEL
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      db: 'disconnected',
+      error: (error as Error).message,
+      env: {
+        POSTGRES_URL: !!process.env.POSTGRES_URL,
+        POSTGRES_URL_NON_POOLING: !!process.env.POSTGRES_URL_NON_POOLING,
+        DATABASE_URL: !!process.env.DATABASE_URL,
+        VERCEL: !!process.env.VERCEL
+      }
+    });
+  }
 });
 
 app.get('/api/users', requireAuth, async (req: AuthRequest, res) => {
@@ -146,6 +170,7 @@ async function startViteServer() {
 
 // Only start the server if NOT running on Vercel
 if (!process.env.VERCEL) {
+  initSuperAdmin();
   startViteServer().then(() => {
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`Server running on http://localhost:${PORT}`);
