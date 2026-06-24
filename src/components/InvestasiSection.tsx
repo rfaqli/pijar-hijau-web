@@ -14,30 +14,30 @@ export function InvestasiSection() {
     <section className="page-section active pt-0 min-h-screen bg-white" style={{ marginTop: '32px' }}>
       
       {/* Top Banner Section */}
-      <div className="py-20 px-6 relative z-10 bg-[#22c55e]">
+      <div className="pt-10 pb-8 sm:py-20 px-4 sm:px-6 relative z-10 bg-[#22c55e]">
         <div className="max-w-5xl mx-auto relative z-10 text-center">
-          <div className="flex items-center justify-center mb-6">
-            <div className="bg-[#facc15] text-yellow-950 px-4 py-1.5 rounded-full font-bold text-sm flex items-center gap-2">
-              <ArrowUpRight className="w-4 h-4" /> Investasi Hijau
+          <div className="flex items-center justify-center mb-4 sm:mb-6 mt-4 sm:mt-0">
+            <div className="bg-[#facc15] text-yellow-950 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full font-bold text-[10px] sm:text-sm flex items-center gap-1 sm:gap-2">
+              <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4" /> Investasi Hijau
             </div>
           </div>
-          <h2 className="text-3xl md:text-4xl text-white font-bold mb-4">Wujudkan Masa Depan Hijau Melalui Investasi Cerdas</h2>
-          <p className="text-green-50 text-base md:text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
+          <h2 className="text-xl sm:text-3xl md:text-4xl text-white font-bold mb-3 sm:mb-4 px-2 sm:px-0">Wujudkan Masa Depan Hijau Melalui Investasi Cerdas</h2>
+          <p className="text-green-50 text-xs sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-12 max-w-3xl mx-auto px-2 sm:px-0">
             Berinvestasi di sektor industri hijau bukan hanya tentang keuntungan finansial, tetapi juga berkontribusi pada keberlanjutan planet kita.
           </p>
           
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-[#4ade80]/30 border border-[#86efac]/50 rounded-2xl p-6 text-center">
-              <p className="text-3xl md:text-4xl font-bold text-[#facc15] mb-2">Rp 1T+</p>
-              <p className="text-white text-sm font-medium">Nilai Investasi Hijau</p>
+          <div className="grid grid-cols-3 gap-2 sm:gap-6 max-w-4xl mx-auto">
+            <div className="bg-[#4ade80]/30 border border-[#86efac]/50 rounded-xl sm:rounded-2xl p-2 sm:p-6 text-center flex flex-col justify-center">
+              <p className="text-sm sm:text-3xl md:text-4xl font-bold text-[#facc15] mb-0.5 sm:mb-2">Rp 1T+</p>
+              <p className="text-white text-[7px] sm:text-sm font-medium leading-tight">Nilai Investasi Hijau</p>
             </div>
-            <div className="bg-[#4ade80]/30 border border-[#86efac]/50 rounded-2xl p-6 text-center">
-              <p className="text-3xl md:text-4xl font-bold text-[#facc15] mb-2">150+</p>
-              <p className="text-white text-sm font-medium">Perusahaan Terverifikasi</p>
+            <div className="bg-[#4ade80]/30 border border-[#86efac]/50 rounded-xl sm:rounded-2xl p-2 sm:p-6 text-center flex flex-col justify-center">
+              <p className="text-sm sm:text-3xl md:text-4xl font-bold text-[#facc15] mb-0.5 sm:mb-2">150+</p>
+              <p className="text-white text-[7px] sm:text-sm font-medium leading-tight">Perusahaan Terverifikasi</p>
             </div>
-            <div className="bg-[#4ade80]/30 border border-[#86efac]/50 rounded-2xl p-6 text-center">
-              <p className="text-3xl md:text-4xl font-bold text-[#facc15] mb-2">12-18%</p>
-              <p className="text-white text-sm font-medium">ROI Rata-Rata</p>
+            <div className="bg-[#4ade80]/30 border border-[#86efac]/50 rounded-xl sm:rounded-2xl p-2 sm:p-6 text-center flex flex-col justify-center">
+              <p className="text-sm sm:text-3xl md:text-4xl font-bold text-[#facc15] mb-0.5 sm:mb-2">12-18%</p>
+              <p className="text-white text-[7px] sm:text-sm font-medium leading-tight">ROI Rata-Rata</p>
             </div>
           </div>
         </div>

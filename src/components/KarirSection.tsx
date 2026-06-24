@@ -58,36 +58,36 @@ export function KarirSection() {
             <p className="text-gray-600 text-sm md:text-base">Temukan karir impian Anda di industri berkelanjutan Indonesia</p>
           </div>
 
-          <div className="max-w-3xl mx-auto mb-10">
-            <div className="flex rounded-md overflow-hidden shadow-sm border border-gray-300 bg-white">
+          <div className="max-w-3xl mx-auto mb-10 overflow-hidden w-full">
+            <div className="flex rounded-md overflow-hidden shadow-sm border border-gray-300 bg-white mx-4 sm:mx-0">
               <input 
                 type="text" 
                 placeholder="Cari lowongan industri hijau..." 
-                className="flex-1 px-6 py-3 outline-none text-sm bg-transparent text-gray-800 placeholder-gray-400 font-sans"
+                className="flex-1 px-4 sm:px-6 py-2.5 sm:py-3 outline-none text-xs sm:text-sm bg-transparent text-gray-800 placeholder-gray-400 font-sans"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
               /> 
-              <button className="bg-[#148348] text-white px-8 hover:bg-[#106b3a] transition-colors flex items-center justify-center">
-                <Search className="w-5 h-5" />
+              <button className="bg-[#148348] text-white px-5 sm:px-8 hover:bg-[#106b3a] transition-colors flex items-center justify-center">
+                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
             
-            <div className="flex flex-wrap gap-3 justify-center mt-6">
+            <div className="flex overflow-x-auto gap-2 sm:gap-3 px-4 sm:px-0 justify-start sm:justify-center mt-6 pb-2 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               <button 
                 onClick={() => setActiveCategory('all')} 
-                className={cn("px-5 py-2 rounded-full text-xs font-semibold transition-colors border", activeCategory === 'all' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
+                className={cn("whitespace-nowrap px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold transition-colors border", activeCategory === 'all' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
               >Semua</button>
               <button 
                 onClick={() => setActiveCategory('energi')} 
-                className={cn("px-5 py-2 rounded-full text-xs font-semibold transition-colors border", activeCategory === 'energi' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
+                className={cn("whitespace-nowrap px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold transition-colors border", activeCategory === 'energi' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
               >Energi Terbarukan</button>
               <button 
                 onClick={() => setActiveCategory('limbah')} 
-                className={cn("px-5 py-2 rounded-full text-xs font-semibold transition-colors border", activeCategory === 'limbah' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
+                className={cn("whitespace-nowrap px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold transition-colors border", activeCategory === 'limbah' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
               >Pengelolaan Limbah</button>
               <button 
                 onClick={() => setActiveCategory('pertanian')} 
-                className={cn("px-5 py-2 rounded-full text-xs font-semibold transition-colors border", activeCategory === 'pertanian' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
+                className={cn("whitespace-nowrap px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold transition-colors border", activeCategory === 'pertanian' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
               >Pertanian Berkelanjutan</button>
             </div>
           </div>
@@ -120,29 +120,29 @@ export function KarirSection() {
                 </div>
               </div>
 
-              <div className="border border-[#2fa18b] rounded-xl p-4 bg-[#148348]/20 flex items-center gap-3">
-                <span className="text-xl shrink-0">🌱</span>
-                <p className="text-sm text-white font-medium">Indonesia memiliki potensi luar biasa di sektor energi terbarukan dengan radiasi matahari 4-5 kWh/m²/hari. Pertumbuhan sektor hijau menciptakan peluang karir bagi jutaan orang dan berkontribusi pada target net-zero 2060.</p>
+              <div className="border border-[#2fa18b] rounded-xl p-3 sm:p-4 bg-[#148348]/20 flex items-start sm:items-center gap-2 sm:gap-3">
+                <span className="text-base sm:text-xl shrink-0 mt-0.5 sm:mt-0">🌱</span>
+                <p className="text-[10px] sm:text-sm text-white font-medium leading-relaxed">Indonesia memiliki potensi luar biasa di sektor energi terbarukan dengan radiasi matahari 4-5 kWh/m²/hari. Pertumbuhan sektor hijau menciptakan peluang karir bagi jutaan orang dan berkontribusi pada target net-zero 2060.</p>
               </div>
             </div>
           </Reveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 px-2 sm:px-0">
             {filteredJobs.map((job, idx) => (
               <div 
                 key={idx}
                 className="card-hover bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer flex flex-col" 
                 onClick={() => setSelectedJob(job)}
               >
-                <img src={job.img} alt={job.title} className="w-full h-48 object-cover" loading="lazy" />
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="font-bold text-gray-900 mb-1 text-lg leading-tight">{job.title}</h3>
-                  <p className="text-gray-500 text-sm mb-6 flex-1">{job.company}</p>
-                  <div className="flex justify-between items-center mt-auto">
-                    <span className="text-[10px] font-bold px-3 py-1 pb-1.5 rounded-full bg-[#fefce8] text-[#854d0e] uppercase tracking-widest">
+                <img src={job.img} alt={job.title} className="w-full h-24 sm:h-48 object-cover" loading="lazy" />
+                <div className="p-3 sm:p-6 flex-1 flex flex-col">
+                  <h3 className="font-bold text-gray-900 mb-1 text-[11px] sm:text-lg leading-tight">{job.title}</h3>
+                  <p className="text-gray-500 text-[9px] sm:text-sm mb-3 sm:mb-6 flex-1">{job.company}</p>
+                  <div className="flex justify-between items-end sm:items-center mt-auto gap-1">
+                    <span className="text-[7px] sm:text-[10px] font-bold px-1.5 sm:px-3 py-0.5 sm:py-1 sm:pb-1.5 rounded-full bg-[#fefce8] text-[#854d0e] uppercase tracking-widest truncate max-w-[65%]">
                       {job.location}
                     </span>
-                    <span className="text-xs text-gray-400 font-mono">{job.experience}</span>
+                    <span className="text-[7px] sm:text-xs text-gray-400 font-mono whitespace-nowrap">{job.experience}</span>
                   </div>
                 </div>
               </div>

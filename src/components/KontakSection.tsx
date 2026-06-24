@@ -71,8 +71,8 @@ export function KontakSection() {
         </div>
       </div>
 
-      <footer className="py-12 px-6 bg-[#185e33] flex items-center justify-center text-center relative z-10 w-full mt-auto">
-        <p className="text-green-50 font-medium">
+      <footer className="py-6 sm:py-12 px-6 bg-[#185e33] flex items-center justify-center text-center relative z-10 w-full mt-auto">
+        <p className="text-green-50 font-medium text-[10px] sm:text-base">
           © {new Date().getFullYear()} Pijar Hijau. Platform Karir & Edukasi Industri Hijau Indonesia.
         </p>
       </footer>
