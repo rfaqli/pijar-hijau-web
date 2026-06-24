@@ -31,17 +31,17 @@ export function HeroSection() {
               Platform Pusat Informasi dan Jejaring Karier Hijau
             </h1>
 
-            <div className="flex flex-col sm:flex-row gap-4 relative z-10">
+            <div className="flex flex-row gap-2 sm:gap-4 relative z-10 justify-center">
               <button 
-                className="bg-[#facc15] text-[#14532d] font-bold rounded-full hover:bg-yellow-400 transition-colors shadow-md border border-transparent flex items-center justify-center"
-                style={{ height: 'max(40px, 4.4dvh)', paddingLeft: '32px', paddingRight: '32px', fontSize: 'clamp(11px, 1.5dvh, 16px)' }}
+                className="bg-[#facc15] text-[#14532d] font-bold rounded-full hover:bg-yellow-400 transition-colors shadow-md border border-transparent flex items-center justify-center whitespace-nowrap"
+                style={{ height: 'max(36px, 4.4dvh)', paddingLeft: 'clamp(16px, 3vw, 32px)', paddingRight: 'clamp(16px, 3vw, 32px)', fontSize: 'clamp(10px, 1.4dvh, 16px)' }}
                 onClick={() => setCurrentPage('profil')}
               >
                 Mulai Sekarang
               </button> 
               <button 
-                className="bg-white/10 backdrop-blur-sm text-white font-bold rounded-full border border-white hover:bg-white/20 transition-colors shadow-md flex items-center justify-center"
-                style={{ height: 'max(40px, 4.4dvh)', paddingLeft: '32px', paddingRight: '32px', fontSize: 'clamp(11px, 1.5dvh, 16px)' }}
+                className="bg-white/10 backdrop-blur-sm text-white font-bold rounded-full border border-white hover:bg-white/20 transition-colors shadow-md flex items-center justify-center whitespace-nowrap"
+                style={{ height: 'max(36px, 4.4dvh)', paddingLeft: 'clamp(16px, 3vw, 32px)', paddingRight: 'clamp(16px, 3vw, 32px)', fontSize: 'clamp(10px, 1.4dvh, 16px)' }}
                 onClick={() => setCurrentPage('kelas')}
               >
                 Pelajari Lebih Lanjut

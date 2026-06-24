@@ -30,12 +30,12 @@ export function Navigation() {
               key={link.id}
               onClick={() => setCurrentPage(link.id as Page)}
               className={cn(
-                "nav-link flex flex-col items-center justify-center gap-1 py-2 transition flex-shrink-0 w-[72px] sm:w-20",
+                "nav-link flex flex-col items-center justify-center gap-1 py-1 sm:py-2 transition flex-shrink-0 w-14 sm:w-[72px] md:w-20",
                 isActive ? "text-green-600 font-semibold" : "text-gray-500 hover:text-gray-900"
               )}
             >
-              <Icon className={cn("w-[24px] h-[24px]", isActive ? "text-green-600" : "")} />
-              <span className="text-[12px] leading-tight whitespace-nowrap">{link.label}</span>
+              <Icon className={cn("w-5 h-5 sm:w-[24px] sm:h-[24px]", isActive ? "text-green-600" : "")} />
+              <span className="text-[9px] sm:text-[12px] leading-tight whitespace-nowrap">{link.label}</span>
             </button>
           );
         })}
@@ -43,14 +43,14 @@ export function Navigation() {
           <button
             onClick={() => setCurrentPage('profil')}
             className={cn(
-              "nav-link flex flex-col items-center justify-center gap-1 py-2 transition flex-shrink-0 w-[72px] sm:w-20",
+              "nav-link flex flex-col items-center justify-center gap-1 py-1 sm:py-2 transition flex-shrink-0 w-14 sm:w-[72px] md:w-20",
               currentPage === 'profil' ? "text-green-600 font-semibold" : "text-gray-500 hover:text-gray-900"
             )}
           >
-            <div className={cn("w-[24px] h-[24px] rounded-full overflow-hidden border-2", currentPage === 'profil' ? "border-green-600" : "border-gray-300")}>
+            <div className={cn("w-5 h-5 sm:w-[24px] sm:h-[24px] rounded-full overflow-hidden border-2", currentPage === 'profil' ? "border-green-600" : "border-gray-300")}>
                <img src="/maskot_sihijau.png" alt="Profil" className="w-full h-full object-cover bg-green-50" />
             </div>
-            <span className="text-[12px] leading-tight whitespace-nowrap">Profil</span>
+            <span className="text-[9px] sm:text-[12px] leading-tight whitespace-nowrap">Profil</span>
           </button>
         )}
       </div>
