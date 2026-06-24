@@ -94,29 +94,29 @@ export function KarirSection() {
 
           <Reveal type="reveal-scale">
             <div className="mb-12 bg-[#128f76] rounded-2xl shadow-md overflow-hidden p-8">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-white mb-2">Industri Hijau Indonesia: Pertumbuhan & Peluang</h3>
+              <div className="text-center mb-6 md:mb-8">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Industri Hijau Indonesia: Pertumbuhan & Peluang</h3>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
-                <div className="text-center p-6 border border-[#2fa18b] bg-[#1a9c82] rounded-xl shadow-sm flex flex-col justify-center">
-                  <p className="text-4xl font-black text-[#facc15] mb-2 tracking-tight"><AnimatedCounter end={500000} isFormatted={true} duration={2.5} /></p>
-                  <p className="text-xs font-bold text-white uppercase tracking-wide">Lapangan Kerja Hijau</p>
-                  <p className="text-[10px] text-green-100 mt-2 tracking-widest uppercase">Target 2025</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-6 mb-8">
+                <div className="text-center p-2 sm:p-4 md:p-6 border border-[#2fa18b] bg-[#1a9c82] rounded-xl shadow-sm flex flex-col justify-center overflow-hidden">
+                  <p className="text-xl sm:text-2xl md:text-4xl font-black text-[#facc15] mb-1 md:mb-2 tracking-tighter sm:tracking-tight"><AnimatedCounter end={500000} isFormatted={true} duration={2.5} /></p>
+                  <p className="text-[7px] sm:text-[10px] md:text-xs font-bold text-white uppercase tracking-tighter sm:tracking-wide leading-tight whitespace-nowrap">Lapangan Kerja Hijau</p>
+                  <p className="text-[6px] sm:text-[8px] md:text-[10px] text-green-100 mt-1 md:mt-2 tracking-normal sm:tracking-widest uppercase">Target 2025</p>
                 </div>
-                <div className="text-center p-6 border border-[#2fa18b] bg-[#1a9c82] rounded-xl shadow-sm flex flex-col justify-center">
-                  <p className="text-4xl font-black text-[#facc15] mb-2 tracking-tight"><AnimatedCounter end={28} duration={2.5} /></p>
-                  <p className="text-xs font-bold text-white uppercase tracking-wide">% Pertumbuhan Tahunan</p>
-                  <p className="text-[10px] text-green-100 mt-2 tracking-widest uppercase">Energi Terbarukan</p>
+                <div className="text-center p-2 sm:p-4 md:p-6 border border-[#2fa18b] bg-[#1a9c82] rounded-xl shadow-sm flex flex-col justify-center overflow-hidden">
+                  <p className="text-xl sm:text-2xl md:text-4xl font-black text-[#facc15] mb-1 md:mb-2 tracking-tighter sm:tracking-tight"><AnimatedCounter end={28} duration={2.5} /></p>
+                  <p className="text-[7px] sm:text-[10px] md:text-xs font-bold text-white uppercase tracking-tighter sm:tracking-wide leading-tight whitespace-nowrap">% Pertumbuhan Tahunan</p>
+                  <p className="text-[6px] sm:text-[8px] md:text-[10px] text-green-100 mt-1 md:mt-2 tracking-normal sm:tracking-widest uppercase">Energi Terbarukan</p>
                 </div>
-                <div className="text-center p-6 border border-[#2fa18b] bg-[#1a9c82] rounded-xl shadow-sm flex flex-col justify-center">
-                  <p className="text-4xl font-black text-[#facc15] mb-2 tracking-tight"><AnimatedCounter end={23} duration={2.5} /></p>
-                  <p className="text-xs font-bold text-white uppercase tracking-wide">% Target EBT 2025</p>
-                  <p className="text-[10px] text-green-100 mt-2 tracking-widest uppercase">Bauran Energi Indonesia</p>
+                <div className="text-center p-2 sm:p-4 md:p-6 border border-[#2fa18b] bg-[#1a9c82] rounded-xl shadow-sm flex flex-col justify-center overflow-hidden">
+                  <p className="text-xl sm:text-2xl md:text-4xl font-black text-[#facc15] mb-1 md:mb-2 tracking-tighter sm:tracking-tight"><AnimatedCounter end={23} duration={2.5} /></p>
+                  <p className="text-[7px] sm:text-[10px] md:text-xs font-bold text-white uppercase tracking-tighter sm:tracking-wide leading-tight whitespace-nowrap">% Target EBT 2025</p>
+                  <p className="text-[6px] sm:text-[8px] md:text-[10px] text-green-100 mt-1 md:mt-2 tracking-normal sm:tracking-widest uppercase">Bauran Energi Indonesia</p>
                 </div>
-                <div className="text-center p-6 border border-[#2fa18b] bg-[#1a9c82] rounded-xl shadow-sm flex flex-col justify-center">
-                  <p className="text-4xl font-black text-[#facc15] mb-2 tracking-tight"><AnimatedCounter end={1} duration={2.5} /></p>
-                  <p className="text-xs font-bold text-white uppercase tracking-wide">Triliun Rupiah</p>
-                  <p className="text-[10px] text-green-100 mt-2 tracking-widest uppercase">Investasi Hijau 2024</p>
+                <div className="text-center p-2 sm:p-4 md:p-6 border border-[#2fa18b] bg-[#1a9c82] rounded-xl shadow-sm flex flex-col justify-center overflow-hidden">
+                  <p className="text-xl sm:text-2xl md:text-4xl font-black text-[#facc15] mb-1 md:mb-2 tracking-tighter sm:tracking-tight"><AnimatedCounter end={1} duration={2.5} /></p>
+                  <p className="text-[7px] sm:text-[10px] md:text-xs font-bold text-white uppercase tracking-tighter sm:tracking-wide leading-tight whitespace-nowrap">Triliun Rupiah</p>
+                  <p className="text-[6px] sm:text-[8px] md:text-[10px] text-green-100 mt-1 md:mt-2 tracking-normal sm:tracking-widest uppercase">Investasi Hijau 2024</p>
                 </div>
               </div>
 
