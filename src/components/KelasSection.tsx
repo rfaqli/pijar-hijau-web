@@ -68,11 +68,11 @@ export function KelasSection() {
 
             <div className="mb-16 bg-white rounded-[32px] shadow-sm border border-slate-100 p-8 md:p-12 overflow-hidden relative">
               <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
-                <div className="flex flex-col items-center justify-center">
-                  <div className="w-96 h-96 flex items-center justify-center">
-                    <img src="/maskot_sihijau.png" alt="Si Hijau" className="w-[336px] h-[336px] object-contain animate-bounce drop-shadow-xl" />
+                <div className="flex flex-col items-center justify-center text-center">
+                  <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center max-w-full mx-auto">
+                    <img src="/maskot_sihijau.png" alt="Si Hijau" className="w-full h-full max-w-[250px] sm:max-w-[336px] object-contain animate-bounce drop-shadow-xl mt-8 md:mt-12" />
                   </div>
-                  <p className="font-bold text-[#1a8b44] text-lg mt-4 flex items-center gap-2">Hai! Aku Si Hijau, teman belajarmu! <span className="text-xl">🌿</span></p>
+                  <p className="font-bold text-[#1a8b44] text-base md:text-lg mt-4 flex items-center justify-center gap-2 flex-wrap">Hai! Aku Si Hijau, teman belajarmu! <span className="text-xl">🌿</span></p>
                 </div>
                 <div className="space-y-6">
                   <h3 className="text-xl font-bold text-[#1a8b44] mb-6">Mari Belajar Bersama Kami</h3>
