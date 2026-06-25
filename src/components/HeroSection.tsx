@@ -18,7 +18,7 @@ export function HeroSection() {
 
   return (
     <section className="page-section active pt-8 sm:pt-[max(60px,7.4dvh)]">
-      <header className="relative w-full flex flex-col justify-center items-center overflow-hidden bg-cover bg-center h-[180px] sm:h-[380px]" style={{ backgroundImage: 'url(/hero-bg.png)' }}>
+      <header className="relative w-full flex flex-col justify-center items-center overflow-hidden bg-cover bg-center h-[200px] sm:h-[380px]" style={{ backgroundImage: 'url(/herosection-baru.png)' }}>
         <div className="absolute inset-0 bg-[#14532d]/40 mix-blend-overlay"></div>
         <div className="absolute inset-0 bg-[#064e3b]/50"></div>
         
@@ -31,17 +31,17 @@ export function HeroSection() {
               Platform Pusat Informasi dan Jejaring Karier Hijau
             </h1>
 
-            <div className="flex flex-row gap-2 sm:gap-4 relative z-10 justify-center">
+            <div className="flex flex-row gap-1 sm:gap-4 relative z-10 justify-center">
               <button 
-                className="bg-[#facc15] text-[#14532d] font-bold rounded-full hover:bg-yellow-400 transition-colors shadow-md border border-transparent flex items-center justify-center whitespace-nowrap px-4 sm:px-8 py-1 sm:py-0 h-6 sm:h-auto"
-                style={{ minHeight: 'max(24px, 4.4dvh)', fontSize: 'clamp(8px, 1.4dvh, 16px)' }}
+                className="bg-[#facc15] text-[#14532d] font-bold rounded-full hover:bg-yellow-400 transition-colors shadow-md border border-transparent flex items-center justify-center whitespace-nowrap px-2 sm:px-8 py-0 sm:py-0 h-4 sm:h-auto"
+                style={{ minHeight: 'max(16px, 4.4dvh)', fontSize: 'clamp(5px, 1.4dvh, 16px)' }}
                 onClick={() => setCurrentPage('profil')}
               >
                 Mulai Sekarang
               </button> 
               <button 
-                className="bg-white/10 backdrop-blur-sm text-white font-bold rounded-full border border-white hover:bg-white/20 transition-colors shadow-md flex items-center justify-center whitespace-nowrap px-4 sm:px-8 py-1 sm:py-0 h-6 sm:h-auto"
-                style={{ minHeight: 'max(24px, 4.4dvh)', fontSize: 'clamp(8px, 1.4dvh, 16px)' }}
+                className="bg-white/10 backdrop-blur-sm text-white font-bold rounded-full border border-white hover:bg-white/20 transition-colors shadow-md flex items-center justify-center whitespace-nowrap px-2 sm:px-8 py-0 sm:py-0 h-4 sm:h-auto"
+                style={{ minHeight: 'max(16px, 4.4dvh)', fontSize: 'clamp(5px, 1.4dvh, 16px)' }}
                 onClick={() => setCurrentPage('kelas')}
               >
                 Pelajari Lebih Lanjut
@@ -51,28 +51,28 @@ export function HeroSection() {
         </div>
       </header>
       
-      <section className="relative z-10 bg-white border-b border-gray-100 py-1 sm:py-0 h-auto sm:h-[140px]" style={{ minHeight: 'auto' }}>
-        <div className="w-full max-w-[1920px] mx-auto flex flex-row justify-around sm:justify-evenly items-start sm:items-center h-full px-1 sm:px-6 py-1 sm:py-0">
-          <div className="flex flex-col items-center text-center max-w-[32%] sm:max-w-[300px]">
-            <div className="w-5 h-5 sm:w-14 sm:h-14 rounded-full bg-[#dcfce7] flex items-center justify-center mb-0.5 sm:mb-3">
-              <Briefcase className="text-[#16a34a] w-2.5 h-2.5 sm:w-6 sm:h-6" />
+      <section className="relative z-10 bg-white border-b border-gray-100 py-3 sm:py-0 h-auto sm:h-[140px]" style={{ minHeight: 'auto' }}>
+        <div className="w-full max-w-[1920px] mx-auto flex flex-row justify-between sm:justify-evenly items-start sm:items-center h-full px-2 sm:px-6 py-2 sm:py-0">
+          <div className="flex flex-col items-center text-center w-[31%] sm:max-w-[300px] px-0.5 sm:px-0">
+            <div className="w-7 h-7 sm:w-14 sm:h-14 rounded-full bg-[#dcfce7] flex items-center justify-center mb-1 sm:mb-3">
+              <Briefcase className="text-[#16a34a] w-3.5 h-3.5 sm:w-6 sm:h-6" />
             </div>
-            <span className="font-bold text-[#16a34a] mb-0 sm:mb-1 text-[5px] sm:text-[15px] leading-tight">Peluang Karir</span>
-            <span className="text-gray-500 leading-[1.1] sm:leading-snug text-[4px] sm:text-[13px] mt-0.5 sm:mt-0">Temukan lowongan kerja di sektor industri hijau yang berkembang pesat.</span>
+            <span className="font-bold text-[#16a34a] mb-0 sm:mb-1 text-[6px] sm:text-[15px] leading-tight">Peluang Karir</span>
+            <span className="text-gray-500 leading-[1.2] sm:leading-snug text-[5px] sm:text-[13px] mt-0.5 sm:mt-0">Temukan lowongan kerja di sektor industri hijau yang berkembang pesat.</span>
           </div>
-          <div className="flex flex-col items-center text-center max-w-[32%] sm:max-w-[300px]">
-            <div className="w-5 h-5 sm:w-14 sm:h-14 rounded-full bg-[#fefce8] flex items-center justify-center mb-0.5 sm:mb-3">
-              <Book className="text-[#d97706] w-2.5 h-2.5 sm:w-6 sm:h-6" />
+          <div className="flex flex-col items-center text-center w-[31%] sm:max-w-[300px] px-0.5 sm:px-0">
+            <div className="w-7 h-7 sm:w-14 sm:h-14 rounded-full bg-[#fefce8] flex items-center justify-center mb-1 sm:mb-3">
+              <Book className="text-[#d97706] w-3.5 h-3.5 sm:w-6 sm:h-6" />
             </div>
-            <span className="font-bold text-[#b45309] mb-0 sm:mb-1 text-[5px] sm:text-[15px] leading-tight">Pendidikan Berkualitas</span>
-            <span className="text-gray-500 leading-[1.1] sm:leading-snug text-[4px] sm:text-[13px] mt-0.5 sm:mt-0">Pelajari keterampilan industri hijau dari para ahli dengan sertifikasi terstandar.</span>
+            <span className="font-bold text-[#b45309] mb-0 sm:mb-1 text-[6px] sm:text-[15px] leading-tight">Pendidikan Berkualitas</span>
+            <span className="text-gray-500 leading-[1.2] sm:leading-snug text-[5px] sm:text-[13px] mt-0.5 sm:mt-0">Pelajari keterampilan industri hijau dari para ahli dengan sertifikasi terstandar.</span>
           </div>
-          <div className="flex flex-col items-center text-center max-w-[32%] sm:max-w-[300px]">
-            <div className="w-5 h-5 sm:w-14 sm:h-14 rounded-full bg-[#dcfce7] flex items-center justify-center mb-0.5 sm:mb-3">
-              <TrendingUp className="text-[#16a34a] w-2.5 h-2.5 sm:w-6 sm:h-6" />
+          <div className="flex flex-col items-center text-center w-[31%] sm:max-w-[300px] px-0.5 sm:px-0">
+            <div className="w-7 h-7 sm:w-14 sm:h-14 rounded-full bg-[#dcfce7] flex items-center justify-center mb-1 sm:mb-3">
+              <TrendingUp className="text-[#16a34a] w-3.5 h-3.5 sm:w-6 sm:h-6" />
             </div>
-            <span className="font-bold text-[#16a34a] mb-0 sm:mb-1 text-[5px] sm:text-[15px] leading-tight">Investasi Berkelanjutan</span>
-            <span className="text-gray-500 leading-[1.1] sm:leading-snug text-[4px] sm:text-[13px] mt-0.5 sm:mt-0">Wujudkan masa depan hijau dengan investasi cerdas yang menguntungkan.</span>
+            <span className="font-bold text-[#16a34a] mb-0 sm:mb-1 text-[6px] sm:text-[15px] leading-tight">Investasi Berkelanjutan</span>
+            <span className="text-gray-500 leading-[1.2] sm:leading-snug text-[5px] sm:text-[13px] mt-0.5 sm:mt-0">Wujudkan masa depan hijau dengan investasi cerdas yang menguntungkan.</span>
           </div>
         </div>
       </section>
@@ -119,7 +119,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 lg:grid-cols-3 gap-1 sm:gap-6 px-1 sm:px-0">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6 px-2 sm:px-0">
             {filteredJobs.map((job, idx) => (
               <div 
                 key={idx}
