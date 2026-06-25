@@ -63,19 +63,18 @@ export function Header() {
   const [hasProfile] = useAtom(profileCompletedAtom);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white border-b border-gray-100" style={{ height: 'max(60px, 7.4dvh)' }}>
+    <header className="fixed top-0 w-full z-50 bg-white border-b border-gray-100 h-8 sm:h-[max(60px,7.4dvh)]">
       <div className="w-full max-w-[1920px] h-full mx-auto relative flex items-center justify-between">
         <div 
-          className="cursor-pointer transition-transform hover:scale-105 flex items-center"
-          style={{ paddingLeft: '21px', height: '100%' }}
+          className="cursor-pointer transition-transform hover:scale-105 flex items-center pl-2 sm:pl-[21px]"
+          style={{ height: '100%' }}
           onClick={() => setCurrentPage('hero')}
         >
-           <img src="/logo-pijarhijau.png" alt="Pijar Hijau Logo" style={{ maxHeight: '80%', height: '65px', width: 'auto' }} className="object-contain" />
+           <img src="/logo-pijarhijau.png" alt="Pijar Hijau Logo" className="object-contain h-4 sm:h-[65px]" style={{ maxHeight: '80%', width: 'auto' }} />
         </div>
         {!hasProfile && (
           <button 
-            className="bg-[#16a34a] text-white font-bold rounded-full hover:bg-[#15803d] transition-colors flex items-center justify-center flex-shrink-0"
-            style={{ marginRight: '21px', height: 'max(36px, 4dvh)', paddingLeft: '24px', paddingRight: '24px', fontSize: 'clamp(12px, 1.4dvh, 16px)' }}
+            className="bg-[#16a34a] text-white font-bold rounded-full hover:bg-[#15803d] transition-colors flex items-center justify-center flex-shrink-0 mr-2 sm:mr-[21px] px-1.5 sm:px-6 h-3.5 sm:h-9 text-[5px] sm:text-[15px]"
             onClick={() => setCurrentPage('profil')}
           >
             Mulai Sekarang

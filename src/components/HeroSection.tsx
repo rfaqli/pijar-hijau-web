@@ -17,31 +17,31 @@ export function HeroSection() {
   });
 
   return (
-    <section className="page-section active" style={{ paddingTop: 'max(60px, 7.4dvh)' }}>
-      <header className="relative w-full flex flex-col justify-center items-center overflow-hidden bg-cover bg-center" style={{ height: '380px', backgroundImage: 'url(/hero-bg.png)' }}>
+    <section className="page-section active pt-8 sm:pt-[max(60px,7.4dvh)]">
+      <header className="relative w-full flex flex-col justify-center items-center overflow-hidden bg-cover bg-center h-[180px] sm:h-[380px]" style={{ backgroundImage: 'url(/hero-bg.png)' }}>
         <div className="absolute inset-0 bg-[#14532d]/40 mix-blend-overlay"></div>
         <div className="absolute inset-0 bg-[#064e3b]/50"></div>
         
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center w-full max-w-[1920px] mx-auto">
           
           <div className="flex flex-col items-center justify-center gap-0">
-            <img src="/logo-pijarhijau.png" alt="Pijar Hijau Logo" className="object-contain drop-shadow-xl mb-4" style={{ maxWidth: 'min(420px, 80vw)', width: '100%' }} />
+            <img src="/logo-pijarhijau.png" alt="Pijar Hijau Logo" className="object-contain drop-shadow-xl mb-2 sm:mb-4 w-[160px] sm:w-full" style={{ maxWidth: 'min(420px, 80vw)' }} />
 
-            <h1 className="font-medium text-[#facc15] tracking-wide mb-8 relative z-10 px-4 whitespace-nowrap text-center" style={{ fontSize: 'clamp(10px, 2.8vw, 18px)' }}>
+            <h1 className="font-medium text-[#facc15] tracking-wide mb-3 sm:mb-8 relative z-10 px-4 whitespace-nowrap text-center" style={{ fontSize: 'clamp(8px, 2.8vw, 18px)' }}>
               Platform Pusat Informasi dan Jejaring Karier Hijau
             </h1>
 
             <div className="flex flex-row gap-2 sm:gap-4 relative z-10 justify-center">
               <button 
-                className="bg-[#facc15] text-[#14532d] font-bold rounded-full hover:bg-yellow-400 transition-colors shadow-md border border-transparent flex items-center justify-center whitespace-nowrap"
-                style={{ height: 'max(36px, 4.4dvh)', paddingLeft: 'clamp(16px, 3vw, 32px)', paddingRight: 'clamp(16px, 3vw, 32px)', fontSize: 'clamp(10px, 1.4dvh, 16px)' }}
+                className="bg-[#facc15] text-[#14532d] font-bold rounded-full hover:bg-yellow-400 transition-colors shadow-md border border-transparent flex items-center justify-center whitespace-nowrap px-4 sm:px-8 py-1 sm:py-0 h-6 sm:h-auto"
+                style={{ minHeight: 'max(24px, 4.4dvh)', fontSize: 'clamp(8px, 1.4dvh, 16px)' }}
                 onClick={() => setCurrentPage('profil')}
               >
                 Mulai Sekarang
               </button> 
               <button 
-                className="bg-white/10 backdrop-blur-sm text-white font-bold rounded-full border border-white hover:bg-white/20 transition-colors shadow-md flex items-center justify-center whitespace-nowrap"
-                style={{ height: 'max(36px, 4.4dvh)', paddingLeft: 'clamp(16px, 3vw, 32px)', paddingRight: 'clamp(16px, 3vw, 32px)', fontSize: 'clamp(10px, 1.4dvh, 16px)' }}
+                className="bg-white/10 backdrop-blur-sm text-white font-bold rounded-full border border-white hover:bg-white/20 transition-colors shadow-md flex items-center justify-center whitespace-nowrap px-4 sm:px-8 py-1 sm:py-0 h-6 sm:h-auto"
+                style={{ minHeight: 'max(24px, 4.4dvh)', fontSize: 'clamp(8px, 1.4dvh, 16px)' }}
                 onClick={() => setCurrentPage('kelas')}
               >
                 Pelajari Lebih Lanjut
@@ -51,90 +51,90 @@ export function HeroSection() {
         </div>
       </header>
       
-      <section className="relative z-10 bg-white border-b border-gray-100 py-4 sm:py-0" style={{ height: 'max(140px, 17.1dvh)' }}>
-        <div className="w-full max-w-[1920px] mx-auto flex flex-row justify-around sm:justify-evenly items-start sm:items-center h-full px-2 sm:px-6">
+      <section className="relative z-10 bg-white border-b border-gray-100 py-1 sm:py-0 h-auto sm:h-[140px]" style={{ minHeight: 'auto' }}>
+        <div className="w-full max-w-[1920px] mx-auto flex flex-row justify-around sm:justify-evenly items-start sm:items-center h-full px-1 sm:px-6 py-1 sm:py-0">
           <div className="flex flex-col items-center text-center max-w-[32%] sm:max-w-[300px]">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-[#dcfce7] flex items-center justify-center mb-2 sm:mb-3" style={{ width: 'clamp(40px, 5dvh, 56px)', height: 'clamp(40px, 5dvh, 56px)' }}>
-              <Briefcase className="text-[#16a34a]" style={{ width: 'clamp(20px, 3dvh, 32px)', height: 'clamp(20px, 3dvh, 32px)' }} />
+            <div className="w-5 h-5 sm:w-14 sm:h-14 rounded-full bg-[#dcfce7] flex items-center justify-center mb-0.5 sm:mb-3">
+              <Briefcase className="text-[#16a34a] w-2.5 h-2.5 sm:w-6 sm:h-6" />
             </div>
-            <span className="font-bold text-[#16a34a] mb-0.5 sm:mb-1 text-[9px] sm:text-[15px] leading-tight" style={{ fontSize: 'clamp(10px, 1.4dvh, 15px)' }}>Peluang Karir</span>
-            <span className="text-gray-500 leading-tight sm:leading-snug text-[7px] sm:text-[13px]" style={{ fontSize: 'clamp(8px, 1.2dvh, 13px)' }}>Temukan lowongan kerja di sektor industri hijau yang berkembang pesat.</span>
+            <span className="font-bold text-[#16a34a] mb-0 sm:mb-1 text-[5px] sm:text-[15px] leading-tight">Peluang Karir</span>
+            <span className="text-gray-500 leading-[1.1] sm:leading-snug text-[4px] sm:text-[13px] mt-0.5 sm:mt-0">Temukan lowongan kerja di sektor industri hijau yang berkembang pesat.</span>
           </div>
           <div className="flex flex-col items-center text-center max-w-[32%] sm:max-w-[300px]">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-[#fefce8] flex items-center justify-center mb-2 sm:mb-3" style={{ width: 'clamp(40px, 5dvh, 56px)', height: 'clamp(40px, 5dvh, 56px)' }}>
-              <Book className="text-[#d97706]" style={{ width: 'clamp(20px, 3dvh, 32px)', height: 'clamp(20px, 3dvh, 32px)' }} />
+            <div className="w-5 h-5 sm:w-14 sm:h-14 rounded-full bg-[#fefce8] flex items-center justify-center mb-0.5 sm:mb-3">
+              <Book className="text-[#d97706] w-2.5 h-2.5 sm:w-6 sm:h-6" />
             </div>
-            <span className="font-bold text-[#b45309] mb-0.5 sm:mb-1 text-[9px] sm:text-[15px] leading-tight" style={{ fontSize: 'clamp(10px, 1.4dvh, 15px)' }}>Pendidikan Berkualitas</span>
-            <span className="text-gray-500 leading-tight sm:leading-snug text-[7px] sm:text-[13px]" style={{ fontSize: 'clamp(8px, 1.2dvh, 13px)' }}>Pelajari keterampilan industri hijau dari para ahli dengan sertifikasi terstandar.</span>
+            <span className="font-bold text-[#b45309] mb-0 sm:mb-1 text-[5px] sm:text-[15px] leading-tight">Pendidikan Berkualitas</span>
+            <span className="text-gray-500 leading-[1.1] sm:leading-snug text-[4px] sm:text-[13px] mt-0.5 sm:mt-0">Pelajari keterampilan industri hijau dari para ahli dengan sertifikasi terstandar.</span>
           </div>
           <div className="flex flex-col items-center text-center max-w-[32%] sm:max-w-[300px]">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-[#dcfce7] flex items-center justify-center mb-2 sm:mb-3" style={{ width: 'clamp(40px, 5dvh, 56px)', height: 'clamp(40px, 5dvh, 56px)' }}>
-              <TrendingUp className="text-[#16a34a]" style={{ width: 'clamp(20px, 3dvh, 32px)', height: 'clamp(20px, 3dvh, 32px)' }} />
+            <div className="w-5 h-5 sm:w-14 sm:h-14 rounded-full bg-[#dcfce7] flex items-center justify-center mb-0.5 sm:mb-3">
+              <TrendingUp className="text-[#16a34a] w-2.5 h-2.5 sm:w-6 sm:h-6" />
             </div>
-            <span className="font-bold text-[#16a34a] mb-0.5 sm:mb-1 text-[9px] sm:text-[15px] leading-tight" style={{ fontSize: 'clamp(10px, 1.4dvh, 15px)' }}>Investasi Berkelanjutan</span>
-            <span className="text-gray-500 leading-tight sm:leading-snug text-[7px] sm:text-[13px]" style={{ fontSize: 'clamp(8px, 1.2dvh, 13px)' }}>Wujudkan masa depan hijau dengan investasi cerdas yang menguntungkan.</span>
+            <span className="font-bold text-[#16a34a] mb-0 sm:mb-1 text-[5px] sm:text-[15px] leading-tight">Investasi Berkelanjutan</span>
+            <span className="text-gray-500 leading-[1.1] sm:leading-snug text-[4px] sm:text-[13px] mt-0.5 sm:mt-0">Wujudkan masa depan hijau dengan investasi cerdas yang menguntungkan.</span>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#f8faec] py-16 px-6">
+      <section className="bg-[#f8faec] py-2 sm:py-16 px-1 sm:px-6">
         <div className="max-w-7xl mx-auto">
           
-          <div className="text-center mb-8">
-            <h2 className="font-extrabold text-2xl md:text-3xl text-[#148348] mb-2">Pencarian Kerja Hijau</h2>
-            <p className="text-gray-600 text-sm md:text-base">Temukan karir impian Anda di industri berkelanjutan Indonesia</p>
+          <div className="text-center mb-2 sm:mb-8">
+            <h2 className="font-extrabold text-xs sm:text-2xl md:text-3xl text-[#148348] mb-0.5 sm:mb-2">Pencarian Kerja Hijau</h2>
+            <p className="text-gray-600 text-[5px] sm:text-sm md:text-base">Temukan karir impian Anda di industri berkelanjutan Indonesia</p>
           </div>
 
-          <div className="max-w-3xl mx-auto mb-10 overflow-hidden w-full">
-            <div className="flex rounded-md overflow-hidden shadow-sm border border-gray-300 bg-white mx-4 sm:mx-0">
+          <div className="max-w-3xl mx-auto mb-2 sm:mb-10 overflow-hidden w-full">
+            <div className="flex rounded-md sm:rounded-lg overflow-hidden shadow-sm border border-gray-300 bg-white mx-1 sm:mx-0">
               <input 
                 type="text" 
                 placeholder="Cari lowongan industri hijau..." 
-                className="flex-1 px-4 sm:px-6 py-2.5 sm:py-3 outline-none text-xs sm:text-sm bg-transparent text-gray-800 placeholder-gray-400 font-sans"
+                className="flex-1 px-2 sm:px-6 py-1 sm:py-3 outline-none text-[6px] sm:text-sm bg-transparent text-gray-800 placeholder-gray-400 font-sans"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
               /> 
-              <button className="bg-[#148348] text-white px-5 sm:px-8 hover:bg-[#106b3a] transition-colors flex items-center justify-center">
-                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
+              <button className="bg-[#148348] text-white px-2 sm:px-8 hover:bg-[#106b3a] transition-colors flex items-center justify-center">
+                <Search className="w-2.5 h-2.5 sm:w-5 sm:h-5" />
               </button>
             </div>
             
-            <div className="flex overflow-x-auto gap-2 sm:gap-3 px-4 sm:px-0 justify-start sm:justify-center mt-6 pb-2 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="flex overflow-x-auto gap-0.5 sm:gap-3 px-1 sm:px-0 justify-start sm:justify-center mt-1 sm:mt-6 pb-0.5 sm:pb-2 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               <button 
                 onClick={() => setActiveCategory('all')} 
-                className={cn("whitespace-nowrap px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold transition-colors border", activeCategory === 'all' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
+                className={cn("whitespace-nowrap px-1.5 sm:px-4 py-0.5 sm:py-2 rounded-full text-[5px] sm:text-xs font-semibold transition-colors border", activeCategory === 'all' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
               >Semua</button>
               <button 
                 onClick={() => setActiveCategory('energi')} 
-                className={cn("whitespace-nowrap px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold transition-colors border", activeCategory === 'energi' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
+                className={cn("whitespace-nowrap px-1.5 sm:px-4 py-0.5 sm:py-2 rounded-full text-[5px] sm:text-xs font-semibold transition-colors border", activeCategory === 'energi' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
               >Energi Terbarukan</button>
               <button 
                 onClick={() => setActiveCategory('limbah')} 
-                className={cn("whitespace-nowrap px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold transition-colors border", activeCategory === 'limbah' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
+                className={cn("whitespace-nowrap px-1.5 sm:px-4 py-0.5 sm:py-2 rounded-full text-[5px] sm:text-xs font-semibold transition-colors border", activeCategory === 'limbah' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
               >Pengelolaan Limbah</button>
               <button 
                 onClick={() => setActiveCategory('pertanian')} 
-                className={cn("whitespace-nowrap px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold transition-colors border", activeCategory === 'pertanian' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
+                className={cn("whitespace-nowrap px-1.5 sm:px-4 py-0.5 sm:py-2 rounded-full text-[5px] sm:text-xs font-semibold transition-colors border", activeCategory === 'pertanian' ? "bg-[#2e7d32] text-white border-[#2e7d32]" : "border-[#2e7d32] text-[#2e7d32] hover:bg-green-50")}
               >Pertanian Berkelanjutan</button>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 px-2 sm:px-0">
+          <div className="grid grid-cols-3 lg:grid-cols-3 gap-1 sm:gap-6 px-1 sm:px-0">
             {filteredJobs.map((job, idx) => (
               <div 
                 key={idx}
-                className="card-hover bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer flex flex-col" 
+                className="card-hover bg-white rounded-md sm:rounded-xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer flex flex-col" 
                 onClick={() => setSelectedJob(job)}
               >
-                <img src={job.img} alt={job.title} className="w-full h-24 sm:h-48 object-cover" loading="lazy" />
-                <div className="p-3 sm:p-6 flex-1 flex flex-col">
-                  <h3 className="font-bold text-gray-900 mb-1 text-[11px] sm:text-lg leading-tight">{job.title}</h3>
-                  <p className="text-gray-500 text-[9px] sm:text-sm mb-3 sm:mb-6 flex-1">{job.company}</p>
-                  <div className="flex justify-between items-end sm:items-center mt-auto gap-1">
-                    <span className="text-[7px] sm:text-[10px] font-bold px-1.5 sm:px-3 py-0.5 sm:py-1 sm:pb-1.5 rounded-full bg-[#fefce8] text-[#854d0e] uppercase tracking-widest truncate max-w-[65%]">
+                <img src={job.img} alt={job.title} className="w-full h-10 sm:h-48 object-cover" loading="lazy" />
+                <div className="p-1 sm:p-6 flex-1 flex flex-col">
+                  <h3 className="font-bold text-gray-900 mb-0.5 sm:mb-1 text-[5px] sm:text-lg leading-tight">{job.title}</h3>
+                  <p className="text-gray-500 text-[4px] sm:text-sm mb-1 sm:mb-6 flex-1 leading-tight">{job.company}</p>
+                  <div className="flex justify-between items-end sm:items-center mt-auto gap-0.5 sm:gap-1 flex-wrap sm:flex-nowrap">
+                    <span className="text-[3px] sm:text-[10px] font-bold px-0.5 sm:px-3 py-0.5 sm:py-1 sm:pb-1.5 rounded-full bg-[#fefce8] text-[#854d0e] uppercase tracking-widest truncate max-w-[100%] sm:max-w-[65%]">
                       {job.location}
                     </span>
-                    <span className="text-[7px] sm:text-xs text-gray-400 font-mono whitespace-nowrap">{job.experience}</span>
+                    <span className="text-[3px] sm:text-xs text-gray-400 font-mono whitespace-nowrap mt-0.5 sm:mt-0">{job.experience}</span>
                   </div>
                 </div>
               </div>
