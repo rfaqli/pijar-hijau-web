@@ -119,14 +119,14 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6 px-2 sm:px-0">
+          <div className="grid grid-cols-3 lg:grid-cols-3 gap-1.5 sm:gap-6 px-1 sm:px-0">
             {filteredJobs.map((job, idx) => (
               <div 
                 key={idx}
                 className="card-hover bg-white rounded-md sm:rounded-xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer flex flex-col" 
                 onClick={() => setSelectedJob(job)}
               >
-                <img src={job.img} alt={job.title} className="w-full h-24 sm:h-48 object-cover" loading="lazy" />
+                <img src={job.img} alt={job.title} className="w-full aspect-[4/3] sm:aspect-auto sm:h-48 object-cover" loading="lazy" />
                 <div className="p-1 sm:p-6 flex-1 flex flex-col">
                   <h3 className="font-bold text-gray-900 mb-0.5 sm:mb-1 text-[5px] sm:text-lg leading-tight">{job.title}</h3>
                   <p className="text-gray-500 text-[4px] sm:text-sm mb-1 sm:mb-6 flex-1 leading-tight">{job.company}</p>
