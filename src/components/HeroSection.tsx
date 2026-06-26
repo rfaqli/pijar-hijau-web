@@ -18,7 +18,7 @@ export function HeroSection() {
 
   return (
     <section className="page-section active pt-8 sm:pt-[max(60px,7.4dvh)]">
-      <header className="relative w-full flex flex-col justify-center items-center overflow-hidden bg-cover bg-center h-[200px] sm:h-[380px]" style={{ backgroundImage: 'url(/herosection-v4.png)' }}>
+      <header className="relative w-full flex flex-col justify-center items-center overflow-hidden bg-cover bg-center h-[200px] sm:h-[380px]" style={{ backgroundImage: 'url(/herosection-v5.png)' }}>
         <div className="absolute inset-0 bg-[#14532d]/40 mix-blend-overlay"></div>
         <div className="absolute inset-0 bg-[#064e3b]/50"></div>
         
