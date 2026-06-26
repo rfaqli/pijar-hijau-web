@@ -85,8 +85,8 @@ export function HeroSection() {
             <p className="text-gray-600 text-[5px] sm:text-sm md:text-base">Temukan karir impian Anda di industri berkelanjutan Indonesia</p>
           </div>
 
-          <div className="max-w-3xl mx-auto mb-2 sm:mb-10 overflow-hidden w-full">
-            <div className="flex rounded-md sm:rounded-lg overflow-hidden shadow-sm border border-gray-300 bg-white mx-1 sm:mx-0">
+          <div className="max-w-3xl mx-auto mb-2 sm:mb-10 overflow-hidden w-[70%] sm:w-full">
+            <div className="flex rounded-md sm:rounded-lg overflow-hidden shadow-sm border border-gray-300 bg-white mx-0">
               <input 
                 type="text" 
                 placeholder="Cari lowongan industri hijau..." 
@@ -126,7 +126,7 @@ export function HeroSection() {
                 className="card-hover bg-white rounded-md sm:rounded-xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer flex flex-col" 
                 onClick={() => setSelectedJob(job)}
               >
-                <img src={job.img} alt={job.title} className="w-full h-10 sm:h-48 object-cover" loading="lazy" />
+                <img src={job.img} alt={job.title} className="w-full h-24 sm:h-48 object-cover" loading="lazy" />
                 <div className="p-1 sm:p-6 flex-1 flex flex-col">
                   <h3 className="font-bold text-gray-900 mb-0.5 sm:mb-1 text-[5px] sm:text-lg leading-tight">{job.title}</h3>
                   <p className="text-gray-500 text-[4px] sm:text-sm mb-1 sm:mb-6 flex-1 leading-tight">{job.company}</p>
