@@ -7,7 +7,8 @@ export async function createCustomUser(email: string, passwordHash: string) {
     const result = await db.insert(users)
       .values({
         email,
-        password: passwordHash
+        password: passwordHash,
+        password_hash: passwordHash
       })
       .returning();
     return result[0];
