@@ -31,13 +31,19 @@ export function ProfilSection() {
       });
       if (resSync.ok) {
         const data = await resSync.json();
-        setName(data.name || '');
-        if (data.education) {
+        setName(data.name || localStorage.getItem('user_name') || '');
+        
+        const storedEdu = localStorage.getItem('user_education');
+        const storedUni = localStorage.getItem('user_university');
+        const storedField = localStorage.getItem('user_field');
+        const storedLinkedin = localStorage.getItem('user_linkedin');
+        
+        if (data.education || storedEdu) {
           setProfileCompleted(true);
-          setEducation(data.education || '');
-          setUniversity(data.university || '');
-          setField(data.field || '');
-          setLinkedin(data.linkedin || '');
+          setEducation(data.education || storedEdu || '');
+          setUniversity(data.university || storedUni || '');
+          setField(data.field || storedField || '');
+          setLinkedin(data.linkedin || storedLinkedin || '');
         }
       }
 
@@ -174,6 +180,12 @@ export function ProfilSection() {
         const errData = await res.json().catch(() => ({}));
         throw new Error(errData.error || 'Gagal menyimpan profil');
       }
+      
+      localStorage.setItem('user_name', name);
+      localStorage.setItem('user_education', education);
+      localStorage.setItem('user_university', university);
+      localStorage.setItem('user_field', field);
+      localStorage.setItem('user_linkedin', linkedin);
       
       setProfileCompleted(true);
     } catch (error: any) {
