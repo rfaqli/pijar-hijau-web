@@ -2,11 +2,12 @@ import { db } from './index.js';
 import { users } from './schema.js';
 import { eq } from 'drizzle-orm';
 
-export async function createCustomUser(email: string, passwordHash: string) {
+export async function createCustomUser(email: string, passwordHash: string, name?: string) {
   try {
     const result = await db.insert(users)
       .values({
         email,
+        name: name || 'User',
         password: passwordHash,
         password_hash: passwordHash
       })
