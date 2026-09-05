@@ -46,7 +46,7 @@ app.post('/api/auth/custom-register', async (req, res) => {
     const token = jwt.sign({ email: user.email, uid: user.id.toString() }, JWT_SECRET, { expiresIn: '7d' });
     res.json({ token, user });
   } catch (error) {
-    res.status(500).json({ error: (error as Error).message });
+    res.status(500).json({ error: error.message + (error.detail ? " - " + error.detail : "") + (error.code ? " - " + error.code : "") });
   }
 });
 
@@ -64,7 +64,7 @@ app.post('/api/auth/custom-login', async (req, res) => {
     const token = jwt.sign({ email: user.email, uid: user.id.toString() }, JWT_SECRET, { expiresIn: '7d' });
     res.json({ token, user });
   } catch (error) {
-    res.status(500).json({ error: (error as Error).message });
+    res.status(500).json({ error: error.message + (error.detail ? " - " + error.detail : "") + (error.code ? " - " + error.code : "") });
   }
 });
 
@@ -79,7 +79,7 @@ app.post('/api/auth/sync', requireAuth, async (req: AuthRequest, res) => {
       res.status(404).json({ error: 'User not found' });
     }
   } catch (error) {
-    res.status(500).json({ error: (error as Error).message });
+    res.status(500).json({ error: error.message + (error.detail ? " - " + error.detail : "") + (error.code ? " - " + error.code : "") });
   }
 });
 
@@ -90,7 +90,7 @@ app.post('/api/profile', requireAuth, async (req: AuthRequest, res) => {
     const user = await updateUserProfile(email, req.body);
     res.json(user);
   } catch (error) {
-    res.status(500).json({ error: (error as Error).message });
+    res.status(500).json({ error: error.message + (error.detail ? " - " + error.detail : "") + (error.code ? " - " + error.code : "") });
   }
 });
 
@@ -101,7 +101,7 @@ app.get('/api/profile', requireAuth, async (req: AuthRequest, res) => {
     const user = await getUserProfile(email);
     res.json(user);
   } catch (error) {
-    res.status(500).json({ error: (error as Error).message });
+    res.status(500).json({ error: error.message + (error.detail ? " - " + error.detail : "") + (error.code ? " - " + error.code : "") });
   }
 });
 
@@ -142,10 +142,18 @@ app.get('/api/users', requireAuth, async (req: AuthRequest, res) => {
     const users = await getAllUsers();
     res.json(users);
   } catch (error) {
-    res.status(500).json({ error: (error as Error).message });
+    res.status(500).json({ error: error.message + (error.detail ? " - " + error.detail : "") + (error.code ? " - " + error.code : "") });
   }
 });
 
+app.get('/api/schema-info', async (req, res) => {
+  try {
+    const query = await db.execute(sql`SELECT column_name, data_type, column_default FROM information_schema.columns WHERE table_name = 'users'`);
+    res.json(query.rows);
+  } catch(e: any) {
+    res.json({ error: e.message });
+  }
+});
 app.get('/api/pingdb', async (req, res) => {
   try {
     await db.execute(sql`SELECT 1`);
