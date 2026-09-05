@@ -42,11 +42,8 @@ export async function updateUserPassword(email: string, passwordHash: string) {
 
 export async function updateUserProfile(email: string, data: { name: string; education: string; university: string; field: string; linkedin: string; }) {
   try {
-    const result = await db.update(users)
-      .set({ name: data.name })
-      .where(eq(users.email, email))
-      .returning();
-    return result[0];
+    // We don't save name to DB anymore to match the base schema
+    return { email };
   } catch (error) {
     console.error("Database query failed:", error);
     throw error;
