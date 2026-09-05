@@ -146,6 +146,15 @@ app.get('/api/users', requireAuth, async (req: AuthRequest, res) => {
   }
 });
 
+app.get('/api/pingdb', async (req, res) => {
+  try {
+    await db.execute(sql`SELECT 1`);
+    res.json({ version: 'v2', status: 'connected', env: { POSTGRES: !!process.env.POSTGRES_URL, DATABASE: !!process.env.DATABASE_URL } });
+  } catch (error: any) {
+    res.status(500).json({ version: 'v2', status: 'error', error: error.message });
+  }
+});
+
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error('Express Global Error:', err);
   res.status(500).json({ error: 'Internal Server Error', message: err.message });

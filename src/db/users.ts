@@ -13,7 +13,7 @@ export async function createCustomUser(email: string, passwordHash: string) {
     return result[0];
   } catch (error) {
     console.error("Database query failed:", error);
-    throw new Error("Database query failed. Please try again later.", { cause: error });
+    throw error;
   }
 }
 
@@ -23,7 +23,7 @@ export async function getUserByEmail(email: string) {
     return result[0];
   } catch (error) {
     console.error("Database query failed:", error);
-    throw new Error("Database query failed. Please try again later.", { cause: error });
+    throw error;
   }
 }
 
@@ -36,7 +36,7 @@ export async function updateUserPassword(email: string, passwordHash: string) {
     return result[0];
   } catch (error) {
     console.error("Database query failed:", error);
-    throw new Error("Database query failed. Please try again later.", { cause: error });
+    throw error;
   }
 }
 
@@ -49,7 +49,7 @@ export async function updateUserProfile(email: string, data: { name: string; edu
     return result[0];
   } catch (error) {
     console.error("Database query failed:", error);
-    throw new Error("Database query failed. Please try again later.", { cause: error });
+    throw error;
   }
 }
 
@@ -59,7 +59,7 @@ export async function getUserProfile(email: string) {
     return result[0];
   } catch (error) {
     console.error("Database query failed:", error);
-    throw new Error("Database query failed. Please try again later.", { cause: error });
+    throw error;
   }
 }
 
@@ -69,6 +69,6 @@ export async function getAllUsers() {
     return result;
   } catch (error) {
     console.error("Database query failed:", error);
-    throw new Error("Database query failed. Please try again later.", { cause: error });
+    throw error;
   }
 }
